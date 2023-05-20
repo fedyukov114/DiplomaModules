@@ -1,0 +1,17 @@
+version: '2.1'
+services:
+  monopoly_db:
+    container_name: monopoly_db
+    image: library/postgres:12.6
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=monopoly
+      - DB_PORT=5433
+    volumes:
+      - monopoly_database:/var/lib/postgresql/data:z
+    ports:
+      - 5433:5432
+volumes:
+  monopoly_database:
+    external: true

@@ -1,0 +1,17 @@
+version: '2.1'
+services:
+  bunker_db:
+    container_name: bunker_db
+    image: library/postgres:12.6
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=bunker
+      - DB_PORT=5435
+    volumes:
+      - bunker_database:/var/lib/postgresql/data:z
+    ports:
+      - 5435:5432
+volumes:
+  bunker_database:
+    external: true
